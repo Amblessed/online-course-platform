@@ -1,0 +1,79 @@
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+server:
+    error:
+        include-message: always
+
+spring:
+    profiles:
+        active: qa
+
+---
+
+spring:
+    datasource:
+        password: bright##++29
+        url: jdbc:postgresql://localhost:5432/courses_db-qa
+        username: postgres1
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                enable_lazy_load_no_trans: true
+                format_sql: true
+        show-sql: true
+    config:
+        activate:
+            on-profile: "qa"
+server:
+    port: 9091
+
+
+---
+
+spring:
+    datasource:
+        password: bright##++29
+        url: jdbc:postgresql://localhost:5432/courses_db-prod
+        username: postgres1
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                #enable_lazy_load_no_trans: true
+                format_sql: true
+        show-sql: true
+    config:
+        activate:
+            on-profile: "production"
+server:
+    port: 9092
+
+---
+
+spring:
+    datasource:
+        password: bright##++29
+        url: jdbc:postgresql://localhost:5432/courses_db-dev
+        username: postgres1
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                #enable_lazy_load_no_trans: true
+                format_sql: true
+        show-sql: true
+    config:
+        activate:
+            on-profile: "development"
+server:
+    port: 9090
