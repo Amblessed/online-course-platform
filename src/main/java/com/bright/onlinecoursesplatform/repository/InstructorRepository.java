@@ -10,9 +10,11 @@ import com.bright.onlinecoursesplatform.entity.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
     @Query(value = "select i from Instructor as i where i.firstName like %:name% or i.lastName like %:name%")  //This is using the class Instructor.
