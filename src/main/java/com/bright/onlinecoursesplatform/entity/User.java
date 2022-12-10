@@ -52,6 +52,11 @@ public class User {
         this.password = password;
     }
 
+    public User(Long userId, String email, String password) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+    }
 
     public void assignRoleToUser(Role role){
         this.roles.add(role);
@@ -76,9 +81,11 @@ public class User {
         return Objects.hash(userId, email, password);
     }
 
-    public User(Long userId, String email, String password) {
-        this.userId = userId;
-        this.email = email;
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
