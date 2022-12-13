@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{layouts :: header}"></head>
+<body>
+<nav th:replace="~{layouts :: navigation}"></nav>
+<div class="container my-3">
+    <!-- Content here -->
+    <div class="row my-3">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card border-0 border-right-0">
+            <h1 class="text-center">Edit Instructor Details</h1>
+            <div class="card-body border-0">
+                <form method="post" th:action="@{update}" th:object="${instructor}">
+
+                    <div class="form-group mb-3 form-floating">
+                        <input type="number" name="instructorId" th:field="${instructor.instructorId}" placeholder="Course ID"
+                               class="form-control" id="floatingInstructorId" readonly>
+                        <label class="form-label" for="floatingInstructorId">Instructor ID</label>
+                    </div>
+
+                    <div class="form-group mb-3 form-floating">
+                        <input type="text" name="firstName" th:field="${instructor.firstName}" placeholder="First Name"
+                               class="form-control" id="floatingFirstName">
+                        <label class="form-label" for="floatingFirstName">First Name</label>
+                    </div>
+
+                    <div class="form-group mb-3 form-floating">
+                        <input type="text" name="lastName" th:field="${instructor.lastName}" placeholder="Last Name"
+                               class="form-control" id="floatingLastName">
+                        <label class="form-label" for="floatingLastName">Last Name</label>
+                    </div>
+
+                    <div class="form-group mb-3 form-floating">
+                        <input type="text" name="summary" th:field="${instructor.summary}" placeholder="Summary"
+                               class="form-control" id="floatingSummary">
+                        <label class="form-label" for="floatingSummary">Summary</label>
+                    </div>
+
+                    <div class="form-group mb-3 form-floating" th:each="course:${instructor.courses}">
+                        <input hidden name="courses" class="form-control" th:value="${instructor.courses[courseStat.index].courseId}">
+                    </div>
+
+                    <div class="form-group mb-3 form-floating" hidden="hidden">
+                        <input name="user" th:field="${instructor.user}" class="form-control">
+                    </div>
+
+                    <div class="box">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

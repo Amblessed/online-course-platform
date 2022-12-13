@@ -19,6 +19,7 @@ public interface StudentService {
     Student findStudentByEmail(String email);
 
     Student createStudent(String firstName, String lastName, String level, String email, String password);
+    Student createStudent(Student student);
 
     Student update(Student student);
 

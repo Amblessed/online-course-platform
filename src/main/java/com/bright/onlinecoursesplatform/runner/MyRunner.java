@@ -33,7 +33,7 @@ public class MyRunner implements CommandLineRunner {
     private final String INSTRUCTOR = "Instructor";
     private final String STUDENT = "Student";
 
-    @Override
+    //@Override
     public void run(String... args) {
 
         User user1 = userService.createUser("user1@gmail.com", "pass1");
@@ -47,13 +47,13 @@ public class MyRunner implements CommandLineRunner {
         userService.assignRoleToUser(user1.getEmail(), INSTRUCTOR);
         userService.assignRoleToUser(user2.getEmail(), STUDENT);
 
-        Instructor instructor1 = instructorService.createInstructor("instructor1FN", "instructor1LN", "Experienced Instructor",
-                "instructorUser1@gmail.com", "pass1");
-        Instructor instructor2 = instructorService.createInstructor("instructor2FN", "instructor2LN", "Senior Instructor",
-                "instructorUser2@gmail.com", "pass2");
+        Instructor instructor1 = instructorService.createInstructor("Terresa", "Stiedemann", "Experienced Instructor",
+                "terresa.stiedemann.instructor@gmail.com", "pass1");
+        Instructor instructor2 = instructorService.createInstructor("Nathan", "Ondricka", "Senior Instructor",
+                "nathan.ondricka.instructor@gmail.com", "pass2");
 
-        Student student1 = studentService.createStudent("student1FN", "student1LN", "Beginner", "student1@gmail.com", "pass1");
-        Student student2 = studentService.createStudent("student2FN", "student2LN", "Master Degree", "student2@gmail.com", "pass2");
+        Student student1 = studentService.createStudent("Dennis", "Marks", "Beginner", "dennis.marks.student@gmail.com", "pass1");
+        Student student2 = studentService.createStudent("Dora", "Medhurst", "Master Degree", "dora.medhurst.student@gmail.com", "pass2");
 
         Course course1 = courseService.createCourse("Introduction to Spring Data", "25 hours",
                 "Master Spring Data JPA", instructor1.getInstructorId());

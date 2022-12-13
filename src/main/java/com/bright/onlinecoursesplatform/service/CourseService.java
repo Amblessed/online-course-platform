@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface CourseService {
 
-    Course loadCourse(Long courseId);
+    Course findCourseById(Long courseId);
 
     Course createCourse(String courseName, String courseDuration, String courseDescription, Long instructorId);
 
@@ -21,6 +21,7 @@ public interface CourseService {
     List<Course> findCoursesByCourseName(String keyword);
 
     void assignStudentToCourse(Long courseId, Long studentId);
+    void removeStudentFromCourse(Long courseId, Long studentId);
 
     List<Course> fetchAll();
 

@@ -19,6 +19,7 @@ public interface InstructorService {
     Instructor findInstructorByEmail(String email);
 
     Instructor createInstructor(String firstName, String lastName, String summary, String email, String password);
+    Instructor createInstructor(Instructor instructor);
 
     Instructor updateInstructor(Instructor instructor);
 

@@ -53,6 +53,13 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
+    public Student createStudent(Student student) {
+        User user = userService.createUser(student.getUser().getEmail(), student.getUser().getPassword());
+        userService.assignRoleToUser(student.getUser().getEmail(), "Student");
+        return studentRepository.save(new Student(student.getFirstName(), student.getLastName(), student.getLevel(), user));
+    }
+
+    @Override
     public Student update(Student student) {
         return studentRepository.save(student);
     }

@@ -43,13 +43,13 @@ class CourseServiceImplTest {
         course.setCourseId(1L);
         when(courseRepository.findById(any())).thenReturn(Optional.of(course));
 
-        Course actualCourse = courseService.loadCourse(1L);
+        Course actualCourse = courseService.findCourseById(1L);
         assertEquals(course, actualCourse);
     }
 
     @Test
     void testLoadCourseException() {
-        assertThrows(EntityNotFoundException.class,  () -> courseService.loadCourse(9L));
+        assertThrows(EntityNotFoundException.class,  () -> courseService.findCourseById(9L));
     }
 
     @Test

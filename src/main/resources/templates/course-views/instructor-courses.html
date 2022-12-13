@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layouts :: header}"></head>
+<body>
+<nav th:replace="~{layouts :: navigation}"></nav>
+    <div class="container">
+        <div class="card border-0">
+            <div class="card-body">
+                <h5 th:text="|Hello ${instructor.firstName} ${instructor.lastName}, these are your courses:|" class="mt-2"></h5>
+                <table class="table table-bordered table-hover table-striped mt-3">
+                    <thead>
+                        <tr class="text-center">
+<!--                            <th scope="col">Course ID</th>-->
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Course Duration</th>
+                            <th scope="col">Course Description</th>
+                            <th scope="col">Course Instructor</th>
+                            <th scope="col">Number of Registered Students</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="text-center" th:each="course: ${courses}">
+<!--                        <th scope="row" th:text="${course.courseId}">1</th>-->
+                        <td th:text="${course.courseName}">Otto</td>
+                        <td th:text="${course.courseDuration}">Mark</td>
+                        <td th:text="${course.courseDescription}">Otto</td>
+                        <td th:text="|${course.instructor.firstName} ${course.instructor.lastName}|">Otto</td>
+                        <td th:text="${course.getStudents().size()}">Otto</td>
+                        <td>
+                            <a class="btn btn-success" th:href="@{/courses/formUpdate(courseId=${course.courseId})}">Update</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

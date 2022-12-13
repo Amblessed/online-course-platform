@@ -55,6 +55,13 @@ public class InstructorServiceImpl implements InstructorService{
     }
 
     @Override
+    public Instructor createInstructor(Instructor instructor) {
+        User user = userService.createUser(instructor.getUser().getEmail(), instructor.getUser().getPassword());
+        userService.assignRoleToUser(instructor.getUser().getEmail(), "Instructor");
+        return instructorRepository.save(new Instructor(instructor.getFirstName(), instructor.getLastName(), instructor.getSummary(), user));
+    }
+
+    @Override
     public Instructor updateInstructor(Instructor instructor) {
         return instructorRepository.save(instructor);
     }
